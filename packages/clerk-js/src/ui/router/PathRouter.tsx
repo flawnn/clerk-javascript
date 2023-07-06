@@ -1,3 +1,4 @@
+import { NavigateOptions } from '@clerk/types';
 import React from 'react';
 
 import { hasUrlInFragment, mergeFragmentIntoUrl, stripOrigin } from '../../utils';
@@ -18,12 +19,12 @@ export const PathRouter = ({ basePath, preservedParams, children }: PathRouterPr
     throw new Error('Clerk: Missing navigate option.');
   }
 
-  const internalNavigate = (toURL: URL | string | undefined) => {
+  const internalNavigate = (toURL: URL | string | undefined, options?: NavigateOptions) => {
     if (!toURL) {
       return;
     }
     // Only send the path
-    return navigate(stripOrigin(toURL));
+    return navigate(stripOrigin(toURL), options);
   };
 
   const getPath = () => {
@@ -38,8 +39,7 @@ export const PathRouter = ({ basePath, preservedParams, children }: PathRouterPr
     const convertHashToPath = async () => {
       if (hasUrlInFragment(window.location.hash)) {
         const url = mergeFragmentIntoUrl(new URL(window.location.href));
-        window.history.replaceState(window.history.state, '', url.href);
-        await internalNavigate(url.href); // make this navigation as well since replaceState is asynchronous
+        await internalNavigate(url.href, { replace: true });
         setStripped(true);
       }
     };
