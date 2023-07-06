@@ -59,9 +59,12 @@ export const useAwaitableNavigate = () => {
  */
 export function ClerkProvider(props: ClerkProviderProps) {
   const navigate = useAwaitableNavigate();
+  const router = useRouter();
+
   return (
     <ReactClerkProvider
       navigate={navigate}
+      replaceNavigate={(to: string) => router.replace(to)}
       {...props}
     />
   );
