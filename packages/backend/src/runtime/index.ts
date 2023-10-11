@@ -14,18 +14,6 @@
 
 // @ts-ignore - These are package subpaths
 import crypto from '#crypto';
-// @ts-ignore - These are package subpaths
-import * as fetchApisPolyfill from '#fetch';
-
-const {
-  default: fetch,
-  RuntimeAbortController,
-  RuntimeBlob,
-  RuntimeFormData,
-  RuntimeHeaders,
-  RuntimeRequest,
-  RuntimeResponse,
-} = fetchApisPolyfill;
 
 type Runtime = {
   crypto: Crypto;
@@ -50,12 +38,12 @@ const globalFetch = fetch.bind(globalThis);
 const runtime: Runtime = {
   crypto,
   fetch: globalFetch,
-  AbortController: RuntimeAbortController,
-  Blob: RuntimeBlob,
-  FormData: RuntimeFormData,
-  Headers: RuntimeHeaders,
-  Request: RuntimeRequest,
-  Response: RuntimeResponse,
+  AbortController,
+  Blob,
+  FormData,
+  Headers,
+  Request,
+  Response,
 };
 
 export default runtime;
