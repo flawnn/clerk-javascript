@@ -38,13 +38,13 @@
     "@clerk/backend": "0.31.3",
     "@clerk/clerk-react": "4.27.0",
     "@clerk/clerk-sdk-node": "4.12.16",
-    "@clerk/types": "3.57.0",
     "cookie": "0.5.0",
     "tslib": "2.4.1"
   },
   "devDependencies": {
+    "@clerk/types": "3.57.0",
     "@types/cookie": "^0.5.0",
-    "@types/node": "^16.11.55",
+    "@types/node": "^18.18.0",
     "gatsby": "^5.0.0",
     "typescript": "*"
   },

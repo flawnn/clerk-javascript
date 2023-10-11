@@ -32,7 +32,7 @@
     "typescript": "*"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
