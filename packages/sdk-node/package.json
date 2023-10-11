@@ -31,7 +31,7 @@
     "cjs"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "scripts": {
     "build": "npm run clean && tsup",

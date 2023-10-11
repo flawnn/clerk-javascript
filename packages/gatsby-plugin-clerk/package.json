@@ -52,7 +52,7 @@
     "gatsby": "^4.24.8 || ^5"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

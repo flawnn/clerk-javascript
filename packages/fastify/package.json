@@ -44,7 +44,7 @@
     "fastify-plugin": "^4.5.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
