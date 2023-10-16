@@ -103,9 +103,6 @@ clerk.localInterstitial(options);
 
 // Load clerk interstitial from the public Backend API endpoint
 clerk.remotePublicInterstitial(options);
-
-// Load clerk interstitial from the public Private API endpoint (Deprecated)
-clerk.remotePrivateInterstitial(options);
 ```
 
 #### verifyToken(token: string, options: VerifyTokenOptions)

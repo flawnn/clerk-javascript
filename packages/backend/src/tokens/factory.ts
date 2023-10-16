@@ -27,7 +27,6 @@ export type CreateAuthenticateRequestOptions = {
 };
 
 export function createAuthenticateRequest(params: CreateAuthenticateRequestOptions) {
-  const { apiClient } = params;
   const {
     apiKey: buildtimeApiKey = '',
     secretKey: buildtimeSecretKey = '',
@@ -113,14 +112,10 @@ export function createAuthenticateRequest(params: CreateAuthenticateRequestOptio
 
   const remotePublicInterstitialUrl = buildPublicInterstitialUrl;
 
-  // TODO: Replace this function with remotePublicInterstitial
-  const remotePrivateInterstitial = () => apiClient.interstitial.getInterstitial();
-
   return {
     authenticateRequest,
     localInterstitial,
     remotePublicInterstitial,
-    remotePrivateInterstitial,
     remotePublicInterstitialUrl,
     debugRequestState,
   };
