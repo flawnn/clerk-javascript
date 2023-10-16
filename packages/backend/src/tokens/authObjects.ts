@@ -1,4 +1,3 @@
-import { deprecated } from '@clerk/shared/deprecated';
 import type { ActClaim, JwtPayload, ServerGetToken, ServerGetTokenOptions } from '@clerk/types';
 
 import type { Organization, Session, User } from '../api';
@@ -11,10 +10,6 @@ type CreateAuthObjectDebug = (data?: AuthObjectDebugData) => AuthObjectDebug;
 type AuthObjectDebug = () => unknown;
 
 export type SignedInAuthObjectOptions = {
-  /**
-   * @deprecated Use `secretKey` instead.
-   */
-  apiKey?: string;
   secretKey?: string;
   apiUrl: string;
   apiVersion: string;
@@ -59,7 +54,6 @@ export type AuthObject = SignedInAuthObject | SignedOutAuthObject;
 const createDebug: CreateAuthObjectDebug = data => {
   return () => {
     const res = { ...data } || {};
-    res.apiKey = (res.apiKey || '').substring(0, 7);
     res.secretKey = (res.secretKey || '').substring(0, 7);
     res.jwtKey = (res.jwtKey || '').substring(0, 7);
     return { ...res };
@@ -79,14 +73,8 @@ export function signedInAuthObject(
     org_slug: orgSlug,
     sub: userId,
   } = sessionClaims;
-  const { apiKey, secretKey, apiUrl, apiVersion, token, session, user, organization } = options;
-
-  if (apiKey) {
-    deprecated('apiKey', 'Use `secretKey` instead.');
-  }
-
+  const { secretKey, apiUrl, apiVersion, token, session, user, organization } = options;
   const { sessions } = createBackendApiClient({
-    apiKey,
     secretKey,
     apiUrl,
     apiVersion,
@@ -115,10 +103,6 @@ export function signedInAuthObject(
 }
 
 export function signedOutAuthObject(debugData?: AuthObjectDebugData): SignedOutAuthObject {
-  if (debugData?.apiKey) {
-    deprecated('apiKey', 'Use `secretKey` instead.');
-  }
-
   return {
     sessionClaims: null,
     sessionId: null,
