@@ -22,11 +22,13 @@
     "NODE_EXTRA_CA_CERTS",
     "NODE_VERSION",
     "NPM_VERSION",
+    "PORT",
     "RUNNER_ARCH",
     "RUNNER_DEBUG",
     "RUNNER_OS",
     "TZ",
-    "VERCEL"
+    "VERCEL",
+    "VITE_CLERK_*"
   ],
   "pipeline": {
     "build": {
@@ -40,7 +42,6 @@
         "tsconfig.build.json",
         "tsconfig.declarations.json",
         "tsup.config.ts",
-
         "!**/**/*.test.*",
         "!**/test/**",
         "!**/tests/**",
@@ -79,7 +80,6 @@
         "tsconfig.json",
         "tsconfig.*.json",
         "tsup.config.ts",
-
         "!**/__snapshots__/**",
         "!coverage/**",
         "!examples/**",
@@ -103,7 +103,6 @@
         "tsconfig.json",
         "tsconfig.*.json",
         "tsup.config.ts",
-
         "!**/__snapshots__/**",
         "!coverage/**",
         "!examples/**",
