@@ -96,6 +96,14 @@ jobs:
       SCRIPT: 'npm run test:integration:nextjs'
     secrets: inherit
 
+  integration-express:
+    name: Integration (NextJS)
+    needs: build
+    uses: ./.github/workflows/base-e2e.yml
+    with:
+      SCRIPT: 'npm run test:integration:express'
+    secrets: inherit
+
   integration-remix:
     name: Integration (Remix)
     needs: build
