@@ -34,7 +34,7 @@ export const ClientClerkProvider = (props: NextClerkProviderProps) => {
     };
   }, []);
 
-  const mergedProps = mergeNextClerkPropsWithEnv({ ...props, navigate });
+  const mergedProps = mergeNextClerkPropsWithEnv({ ...props, push: navigate });
   return (
     <ClerkNextOptionsProvider options={mergedProps}>
       {/*// @ts-ignore*/}

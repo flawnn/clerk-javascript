@@ -705,8 +705,7 @@ export default class Clerk implements ClerkInterface {
     }
 
     const toURL = new URL(to, window.location.href);
-    const customNavigate =
-      options?.replace && this.#options.replaceNavigate ? this.#options.replaceNavigate : this.#options.navigate;
+    const customNavigate = options?.replace && this.#options.replace ? this.#options.replace : this.#options.push;
 
     if (toURL.origin !== window.location.origin || !customNavigate) {
       windowNavigate(toURL);

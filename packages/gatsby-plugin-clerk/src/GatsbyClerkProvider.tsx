@@ -25,7 +25,7 @@ export function ClerkProvider({ children, ...rest }: GatsbyClerkProviderProps) {
 
   return (
     <ReactClerkProvider
-      navigate={to => navigate(to)}
+      push={to => navigate(to)}
       initialState={__clerk_ssr_state || {}}
       sdkMetadata={SDK_METADATA}
       {...restProps}

@@ -1,4 +1,4 @@
-import { NavigateOptions } from '@clerk/types';
+import type { NavigateOptions } from '@clerk/types';
 import React from 'react';
 
 import { hasUrlInFragment, mergeFragmentIntoUrl, stripOrigin } from '../../utils';

@@ -532,8 +532,8 @@ export type ClerkThemeOptions = DeepSnakeToCamel<DeepPartial<DisplayThemeJSON>>;
 export interface ClerkOptions {
   appearance?: Appearance;
   localization?: LocalizationResource;
-  navigate?: (to: string) => Promise<unknown> | unknown;
-  replaceNavigate?: (to: string) => Promise<unknown> | unknown;
+  push?: (to: string) => Promise<unknown> | unknown;
+  replace?: (to: string) => Promise<unknown> | unknown;
   polling?: boolean;
   selectInitialSession?: (client: ClientResource) => ActiveSessionResource | null;
   /** Controls if ClerkJS will load with the standard browser setup using Clerk cookies */

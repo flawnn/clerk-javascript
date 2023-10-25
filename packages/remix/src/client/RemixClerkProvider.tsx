@@ -84,7 +84,7 @@ export function ClerkProvider({ children, ...rest }: RemixClerkProviderProps): J
   return (
     <ClerkRemixOptionsProvider options={mergedProps}>
       <ReactClerkProvider
-        navigate={(to: string) => awaitableNavigateRef.current?.(to)}
+        push={(to: string) => awaitableNavigateRef.current?.(to)}
         initialState={__clerk_ssr_state}
         sdkMetadata={SDK_METADATA}
         {...mergedProps}

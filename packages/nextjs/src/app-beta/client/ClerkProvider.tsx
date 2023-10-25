@@ -63,8 +63,8 @@ export function ClerkProvider(props: ClerkProviderProps) {
 
   return (
     <ReactClerkProvider
-      navigate={navigate}
-      replaceNavigate={(to: string) => router.replace(to)}
+      push={navigate}
+      replace={(to: string) => router.replace(to)}
       {...props}
     />
   );
