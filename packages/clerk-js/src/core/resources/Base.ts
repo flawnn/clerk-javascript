@@ -1,8 +1,13 @@
-import { isValidBrowserOnline } from '@clerk/shared/browser';
-import type { ClerkAPIErrorJSON, ClerkResourceJSON, ClerkResourceReloadParams, DeletedObjectJSON } from '@clerk/types';
+import type {
+  ClerkAPIErrorJSON,
+  ClerkPaginatedResponse,
+  ClerkResourceJSON,
+  ClerkResourceReloadParams,
+  DeletedObjectJSON,
+} from '@clerk/types';
 
 import { clerkMissingFapiClientInResources } from '../errors';
-import type { FapiClient, FapiRequestInit, FapiResponse, FapiResponseJSON, HTTPMethod } from '../fapiClient';
+import type { FapiClient, FapiRequestInit, FapiResponseJSON, HTTPMethod } from '../fapiClient';
 import type { Clerk } from './internal';
 import { ClerkAPIResponseError, Client } from './internal';
 
@@ -24,26 +29,20 @@ export abstract class BaseResource {
     return BaseResource.clerk.getFapiClient();
   }
 
-  protected static async _fetch<J extends ClerkResourceJSON | DeletedObjectJSON | null>(
-    requestInit: FapiRequestInit,
-    opts: BaseFetchOptions = {},
-  ): Promise<FapiResponseJSON<J> | null> {
+  protected static async _fetch<
+    J extends
+      | ClerkResourceJSON
+      | ClerkResourceJSON[]
+      | DeletedObjectJSON
+      | DeletedObjectJSON[]
+      | ClerkPaginatedResponse<ClerkResourceJSON>
+      | null,
+  >(requestInit: FapiRequestInit, opts: BaseFetchOptions = {}): Promise<FapiResponseJSON<J>> {
     if (!BaseResource.fapiClient) {
       clerkMissingFapiClientInResources();
     }
 
-    let fapiResponse: FapiResponse<J>;
-
-    try {
-      fapiResponse = await BaseResource.fapiClient.request<J>(requestInit);
-    } catch (e) {
-      if (!isValidBrowserOnline()) {
-        console.warn(e);
-        return null;
-      } else {
-        throw e;
-      }
-    }
+    const fapiResponse = await BaseResource.fapiClient.request<J>(requestInit);
 
     const { payload, status, statusText, headers } = fapiResponse;
 
@@ -66,14 +65,10 @@ export abstract class BaseResource {
       await BaseResource.clerk.handleUnauthenticated();
     }
 
-    if (status >= 400) {
-      throw new ClerkAPIResponseError(statusText, {
-        data: payload?.errors as ClerkAPIErrorJSON[],
-        status: status,
-      });
-    }
-
-    return null;
+    throw new ClerkAPIResponseError(statusText, {
+      data: payload?.errors as ClerkAPIErrorJSON[],
+      status: status,
+    });
   }
 
   protected static _updateClient<J>(responseJSON: FapiResponseJSON<J> | null): void {
