@@ -4,7 +4,7 @@ run-name: Production release PR
 on:
   push:
     branches:
-      - main-v4
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -41,7 +41,7 @@ jobs:
         with:
           title: Version Packages
           commit: "chore(repo): Version packages"
-          publish: npm run release
+          publish: npm run release:canary
         env:
           GITHUB_TOKEN: ${{ secrets.CLERK_COOKIE_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
