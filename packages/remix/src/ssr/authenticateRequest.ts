@@ -1,6 +1,12 @@
 import type { RequestState } from '@clerk/backend';
 import { buildRequestUrl, Clerk } from '@clerk/backend';
-import { deprecated, handleValueOrFn, isHttpOrHttps, isProxyUrlRelative } from '@clerk/shared';
+import {
+  apiUrlFromPublishableKey,
+  deprecated,
+  handleValueOrFn,
+  isHttpOrHttps,
+  isProxyUrlRelative,
+} from '@clerk/shared';
 
 import {
   noSecretKeyOrApiKeyError,
@@ -54,7 +60,7 @@ export function authenticateRequest(args: LoaderFunctionArgs, opts: RootAuthLoad
 
   const jwtKey = opts.jwtKey || getEnvVariable('CLERK_JWT_KEY', context);
 
-  const apiUrl = getEnvVariable('CLERK_API_URL', context);
+  const apiUrl = getEnvVariable('CLERK_API_URL', context) || apiUrlFromPublishableKey(publishableKey);
 
   const domain = handleValueOrFn(opts.domain, new URL(request.url)) || getEnvVariable('CLERK_DOMAIN', context) || '';
 
