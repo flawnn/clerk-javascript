@@ -1,5 +1,14 @@
 # Change Log
 
+## 4.64.2
+
+### Patch Changes
+
+- Avoid passing some of the new feedback properties down to the HTML basic elements to avoid react warnings in the console. ([#1951](https://github.com/clerkinc/javascript/pull/1951)) by [@desiprisg](https://github.com/desiprisg)
+
+- Updated dependencies [[`bc19fe025`](https://github.com/clerkinc/javascript/commit/bc19fe025d8b1ee9339dcffdb1dd785d00c4e766)]:
+  - @clerk/shared@1.0.2
+
 ## 4.64.1
 
 ### Patch Changes

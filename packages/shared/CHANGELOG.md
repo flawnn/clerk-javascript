@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- Add clerkTraceId to ClerkBackendApiResponse and ClerkAPIResponseError to allow for better tracing and debugging API error responses. ([#1894](https://github.com/clerkinc/javascript/pull/1894)) by [@Nikpolik](https://github.com/Nikpolik)
+
+  Uses `clerk_trace_id` when available in a response and defaults to [`cf-ray` identifier](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) if missing.
+
 ## 1.0.1
 
 ### Patch Changes

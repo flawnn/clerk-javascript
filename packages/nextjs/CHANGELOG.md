@@ -1,5 +1,17 @@
 # Change Log
 
+## 4.26.2
+
+### Patch Changes
+
+- Deprecate `user`, `session`, and `organization` resources from the returned value of `auth()`. ([#1960](https://github.com/clerkinc/javascript/pull/1960)) by [@panteliselef](https://github.com/panteliselef)
+
+- Updated dependencies [[`bc19fe025`](https://github.com/clerkinc/javascript/commit/bc19fe025d8b1ee9339dcffdb1dd785d00c4e766)]:
+  - @clerk/backend@0.32.2
+  - @clerk/shared@1.0.2
+  - @clerk/clerk-sdk-node@4.12.19
+  - @clerk/clerk-react@4.27.2
+
 ## 4.26.1
 
 ### Patch Changes
