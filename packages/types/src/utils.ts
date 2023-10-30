@@ -83,3 +83,10 @@ type IsSerializable<T> = T extends Function ? false : true;
 export type Serializable<T> = {
   [K in keyof T as IsSerializable<T[K]> extends true ? K : never]: T[K];
 };
+
+/**
+ * Omit without union flattening
+ * */
+export type Without<T, W> = {
+  [P in keyof T as Exclude<P, W>]: T[P];
+};
