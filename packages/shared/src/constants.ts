@@ -6,6 +6,6 @@ export const DEV_SUFFIXES = [
   '.stg.lclclerk.com',
 ];
 
-export const STAGING_SUFFIXES = ['.stg.dev', '.stgstage.dev', 'accountsstage.dev', 'accounts.dev'];
+export const STAGING_SUFFIXES = ['.stg.dev', '.stgstage.dev', 'accountsstage.dev'];
 
 export const DEV_OR_STAGING_SUFFIXES = [...DEV_SUFFIXES, ...STAGING_SUFFIXES];
