@@ -1,6 +1,7 @@
+export { apiUrlFromPublishableKey } from './apiUrlFromPublishableKey';
 export * from './createDeferredPromise';
 export { isStaging } from './instance';
-export { noop } from './noop';
-export * from './runtimeEnvironment';
-export * from './runWithExponentialBackOff';
 export { logErrorInDevMode } from './logErrorInDevMode';
+export { noop } from './noop';
+export * from './runWithExponentialBackOff';
+export * from './runtimeEnvironment';

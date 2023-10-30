@@ -10,7 +10,6 @@
 
 export * from './utils';
 
-export { createWorkerTimers } from './workerTimers';
 export * from './browser';
 export { callWithRetry } from './callWithRetry';
 export * from './color';
@@ -27,3 +26,4 @@ export * from './poller';
 export * from './proxy';
 export * from './underscore';
 export * from './url';
+export { createWorkerTimers } from './workerTimers';
