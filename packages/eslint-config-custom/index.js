@@ -27,7 +27,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/ban-ts-comment': [`warn`, { 'ts-ignore': `allow-with-description` }],
-    '@typescript-eslint/no-unused-vars': [`error`, { varsIgnorePattern: `^_` }],
+    '@typescript-eslint/no-unused-vars': [`warn`, { varsIgnorePattern: `^_` }],
     '@typescript-eslint/consistent-type-imports': [
       'error',
       {
